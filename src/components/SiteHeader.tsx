@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import logo from "@/assets/erc-logo.png";
 
 const nav = [
@@ -25,8 +26,8 @@ export function SiteHeader() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         solid
-          ? "border-b border-border bg-background/80 backdrop-blur-xl"
-          : "bg-transparent"
+          ? "border-b border-border bg-background/95 shadow-sm backdrop-blur"
+          : "border-b border-transparent bg-background/80 backdrop-blur-sm"
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5 lg:px-8">
@@ -39,16 +40,16 @@ export function SiteHeader() {
             className="h-10 w-10 object-contain"
           />
           <span className="leading-tight">
-            <span className="block font-display text-base font-semibold tracking-tight">
+            <span className="block font-display text-base font-bold">
               ЄРЦ
             </span>
-            <span className="hidden text-[11px] uppercase tracking-[0.18em] text-muted-foreground sm:block">
+            <span className="hidden text-[10px] uppercase tracking-[0.14em] text-muted-foreground sm:block">
               Єдиний розрахунковий центр
             </span>
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Основна навігація">
           {nav.map((n) => (
             <a
               key={n.href}
@@ -63,26 +64,24 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <a
             href="tel:+380986511747"
-            className="hidden items-center gap-2 rounded-full border border-border px-4 py-2 text-sm text-foreground transition-colors hover:bg-secondary md:inline-flex"
+             className="hidden items-center gap-2 border-l border-border px-4 py-2 text-sm text-foreground transition-colors hover:text-primary md:inline-flex"
           >
             <Phone className="h-4 w-4 text-primary" />
             (+380) 98-651-17-47
           </a>
-          <a
-            href="#contacts"
-            className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] sm:inline-block"
-            style={{ boxShadow: "var(--shadow-glow)" }}
-          >
-            Залишити заявку
-          </a>
-          <button
+          <Button asChild className="hidden h-10 rounded-sm px-5 sm:inline-flex">
+            <a href="#contacts">Залишити заявку</a>
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
             type="button"
             aria-label="Меню"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border lg:hidden"
+            className="lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -102,7 +101,7 @@ export function SiteHeader() {
             <a
               href="#contacts"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
+              className="mt-2 rounded-sm bg-primary px-5 py-3 text-center text-sm font-semibold text-primary-foreground"
             >
               Залишити заявку
             </a>

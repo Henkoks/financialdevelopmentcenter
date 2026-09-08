@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const EMAIL = "bazilevs2@ukr.net";
 
@@ -33,7 +34,7 @@ export function ContactForm() {
   };
 
   const field =
-    "w-full rounded-xl border border-input bg-background/40 px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-ring";
+    "w-full rounded-sm border border-input bg-background px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-ring";
 
   return (
     <form onSubmit={onSubmit} className="surface-card p-6 sm:p-8" noValidate>
@@ -84,14 +85,13 @@ export function ContactForm() {
         />
       </div>
 
-      <button
+      <Button
         type="submit"
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] sm:w-auto"
-        style={{ boxShadow: "var(--shadow-glow)" }}
+        className="mt-6 h-12 w-full rounded-sm px-6 sm:w-auto"
       >
         <Send className="h-4 w-4" />
         Надіслати заявку
-      </button>
+      </Button>
 
       {sent && (
         <p className="mt-4 text-sm text-primary">

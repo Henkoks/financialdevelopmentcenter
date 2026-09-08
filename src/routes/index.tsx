@@ -14,10 +14,11 @@ import {
   Mail,
   ArrowRight,
 } from "lucide-react";
-import { CityBackdrop } from "@/components/CityBackdrop";
+import { InfrastructureVisual } from "@/components/InfrastructureVisual";
 import { SiteHeader } from "@/components/SiteHeader";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
+import { Button } from "@/components/ui/button";
 import logo from "@/assets/erc-logo.png";
 
 export const Route = createFileRoute("/")({
@@ -160,13 +161,13 @@ function SectionTitle({
   title: string;
 }) {
   return (
-    <div className="mb-8 max-w-3xl">
+    <div className="mb-10 grid max-w-5xl gap-4 border-t border-border pt-5 md:grid-cols-[11rem_1fr]">
       {eyebrow && (
-        <p className="mb-3 text-xs uppercase tracking-[0.24em] text-primary">
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">
           {eyebrow}
         </p>
       )}
-      <h2 className="text-3xl font-semibold leading-tight sm:text-4xl">
+      <h2 className="text-3xl font-normal leading-tight sm:text-4xl">
         {title}
       </h2>
     </div>
@@ -178,58 +179,57 @@ function Index() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
-      {/* HERO */}
       <section
         id="hero"
-        className="relative flex min-h-[100svh] items-center overflow-hidden"
+        className="relative flex min-h-[94svh] items-center overflow-hidden border-b border-border pt-24"
       >
-        <CityBackdrop />
-        <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-32 lg:px-8">
-          <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/40 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary backdrop-blur">
-              Житлово-комунальне господарство
-            </span>
-          </Reveal>
-          <Reveal delay={120}>
-            <h1 className="mt-6 max-w-4xl font-display text-3xl font-semibold leading-[1.12] sm:text-5xl lg:text-6xl">
-              ТОВ «Управляюча компанія{" "}
-              <span className="text-gradient">«Єдиний розрахунковий центр»</span>
-              »
-            </h1>
-          </Reveal>
-          <Reveal delay={220}>
-            <p className="mt-5 max-w-2xl text-lg text-foreground/85 sm:text-xl">
-              Комплексні рішення для підприємств житлово-комунального
-              господарства
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <p className="mt-5 max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              ТОВ «Управляюча компанія «Єдиний розрахунковий центр»» надає
-              професійні послуги для підприємств житлово-комунального
-              господарства. Ми допомагаємо комунальним підприємствам,
-              управляючим компаніям, тепломережам, водоканалам та іншим
-              організаціям ефективно організовувати роботу з абонентами,
-              впроваджувати сучасні підходи до обліку, обслуговування, білінгу
-              та управління заборгованістю.
-            </p>
-          </Reveal>
-          <Reveal delay={380}>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              <a
-                href="#contacts"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03]"
-                style={{ boxShadow: "var(--shadow-glow)" }}
-              >
-                Залишити заявку <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#services"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/30 px-7 py-3.5 text-sm font-medium backdrop-blur transition-colors hover:bg-secondary"
-              >
-                Наші напрями
-              </a>
-            </div>
+        <div className="hero-paper absolute inset-0" />
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-5 py-14 lg:grid-cols-[minmax(0,1.12fr)_minmax(24rem,0.88fr)] lg:px-8">
+          <div>
+            <Reveal>
+              <span className="inline-flex border-l-2 border-primary pl-3 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                Житлово-комунальне господарство
+              </span>
+            </Reveal>
+            <Reveal delay={100}>
+              <h1 className="mt-7 max-w-4xl font-display text-4xl font-normal leading-[1.08] sm:text-5xl lg:text-6xl">
+                Єдиний розрахунковий центр
+              </h1>
+            </Reveal>
+            <Reveal delay={180}>
+              <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-foreground sm:text-xl">
+                Системні рішення для підприємств житлово-комунального господарства
+              </p>
+            </Reveal>
+            <Reveal delay={240}>
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Організовуємо роботу з абонентами, впроваджуємо точний облік,
+                білінг та керування заборгованістю — від аудиту до щоденної роботи.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild size="lg" className="h-12 rounded-sm px-7">
+                  <a href="#contacts">Обговорити завдання <ArrowRight /></a>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="h-12 rounded-sm px-7">
+                  <a href="#services">Наші напрями</a>
+                </Button>
+              </div>
+            </Reveal>
+            <Reveal delay={360}>
+              <div className="mt-12 grid max-w-2xl grid-cols-3 border-y border-border">
+                {[['01', 'Аудит процесів'], ['02', 'Білінг та облік'], ['03', 'Робота з абонентами']].map(([number, label]) => (
+                  <div key={number} className="border-r border-border px-3 py-5 first:pl-0 last:border-r-0 sm:px-5">
+                    <strong className="block font-display text-xl font-normal text-primary">{number}</strong>
+                    <span className="mt-1 block text-[11px] leading-snug text-muted-foreground sm:text-xs">{label}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={180} className="hidden lg:block">
+            <InfrastructureVisual />
           </Reveal>
         </div>
       </section>
@@ -247,7 +247,7 @@ function Index() {
               "Наша мета — допомогти підприємствам ЖКГ працювати зрозуміло, прозоро та результативно: скоротити хаос у внутрішніх процесах, підвищити якість обслуговування населення, забезпечити контроль за фінансовими потоками та створити сучасну систему взаємодії з абонентами.",
             ].map((p, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="surface-card h-full p-6">
+                <div className="editorial-panel h-full p-6">
                   <span className="font-display text-sm text-primary">
                     0{i + 1}
                   </span>
@@ -263,7 +263,7 @@ function Index() {
 
       {/* НАПРЯМИ */}
       <section id="services" className="relative py-24">
-        <div className="grid-lines pointer-events-none absolute inset-0 opacity-40" />
+        <div className="grid-lines pointer-events-none absolute inset-0 opacity-30" />
         <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
           <Reveal>
             <SectionTitle
@@ -274,8 +274,8 @@ function Index() {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {directions.map((d, i) => (
               <Reveal key={d.text} delay={(i % 3) * 80}>
-                <article className="surface-card group h-full p-6 transition-transform duration-300 hover:-translate-y-1">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-secondary">
+                <article className="editorial-panel group h-full p-6 transition-colors duration-200 hover:border-primary">
+                  <span className="inline-flex h-10 w-10 items-center justify-center border border-border bg-secondary">
                     <d.icon className="h-5 w-5 text-primary" />
                   </span>
                   <p className="mt-4 text-sm leading-relaxed text-foreground/90">
@@ -295,7 +295,7 @@ function Index() {
             <Reveal key={s.id}>
               <article
                 id={s.id}
-                className="surface-card grid gap-6 p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]"
+                className="editorial-panel grid gap-6 p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]"
               >
                 <div>
                   <span className="font-display text-xs tracking-[0.2em] text-primary">
@@ -333,7 +333,7 @@ function Index() {
               "Окремий напрям роботи — управління дебіторською заборгованістю у сфері ЖКГ. Ми вибудовуємо системну комунікацію з боржниками, допомагаємо організувати роботу відповідного підрозділу, розробити алгоритми взаємодії з абонентами та підвищити рівень оплат за надані послуги.",
             ].map((p, i) => (
               <Reveal key={i} delay={i * 100}>
-                <p className="surface-card h-full p-7 text-sm leading-relaxed text-muted-foreground">
+                <p className="editorial-panel h-full p-7 text-sm leading-relaxed text-muted-foreground">
                   {p}
                 </p>
               </Reveal>
@@ -351,8 +351,8 @@ function Index() {
           <div className="grid gap-4 sm:grid-cols-2">
             {advantages.map((a, i) => (
               <Reveal key={a} delay={(i % 2) * 80}>
-                <div className="flex items-start gap-4 rounded-2xl border border-border bg-surface/50 p-5">
-                  <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/15">
+                <div className="flex items-start gap-4 border-t border-border py-5">
+                  <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center border border-primary/30 bg-primary/10">
                     <Check className="h-4 w-4 text-primary" />
                   </span>
                   <p className="text-sm leading-relaxed text-foreground/90">
@@ -386,7 +386,7 @@ function Index() {
               {tags.map((t) => (
                 <span
                   key={t}
-                  className="rounded-full border border-border bg-secondary/60 px-4 py-2 text-sm text-foreground/90"
+                  className="border border-border bg-secondary/60 px-4 py-2 text-sm text-foreground/90"
                 >
                   {t}
                 </span>
@@ -401,8 +401,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <Reveal>
             <div
-              className="overflow-hidden rounded-3xl border border-border p-8 sm:p-14"
-              style={{ background: "var(--gradient-brand)" }}
+              className="overflow-hidden border border-primary bg-primary p-8 sm:p-14"
             >
               <h2 className="max-w-2xl text-3xl font-semibold text-primary-foreground sm:text-4xl">
                 Результат співпраці
@@ -418,7 +417,7 @@ function Index() {
               </p>
               <a
                 href="#contacts"
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-background px-7 py-3.5 text-sm font-semibold text-foreground transition-transform hover:scale-[1.03]"
+                 className="mt-8 inline-flex items-center gap-2 rounded-sm bg-background px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
               >
                 Зв'язатися з нами <ArrowRight className="h-4 w-4" />
               </a>
@@ -435,12 +434,12 @@ function Index() {
           </Reveal>
           <div className="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
             <Reveal>
-              <div className="surface-card flex h-full flex-col gap-4 p-7">
+              <div className="editorial-panel flex h-full flex-col gap-4 p-7">
                 <a
                   href="tel:+380986511747"
-                  className="group flex items-center gap-4 rounded-2xl border border-border p-4 transition-colors hover:bg-secondary"
+                  className="group flex items-center gap-4 border border-border p-4 transition-colors hover:bg-secondary"
                 >
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15">
+                  <span className="inline-flex h-11 w-11 items-center justify-center bg-primary/10">
                     <Phone className="h-5 w-5 text-primary" />
                   </span>
                   <span>
@@ -454,9 +453,9 @@ function Index() {
                 </a>
                 <a
                   href="mailto:bazilevs2@ukr.net"
-                  className="group flex items-center gap-4 rounded-2xl border border-border p-4 transition-colors hover:bg-secondary"
+                  className="group flex items-center gap-4 border border-border p-4 transition-colors hover:bg-secondary"
                 >
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/15">
+                  <span className="inline-flex h-11 w-11 items-center justify-center bg-primary/10">
                     <Mail className="h-5 w-5 text-primary" />
                   </span>
                   <span>
